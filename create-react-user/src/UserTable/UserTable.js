@@ -1,4 +1,6 @@
-function UserTable() {
+import React from "react";
+
+function UserTable({ users }) {
   return (
     <table>
       <thead>
@@ -9,14 +11,16 @@ function UserTable() {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Name data</td>
-          <td>Username data</td>
-          <td>
-            <button className="button muted-button">Edit</button>
-            <button className="button muted-button">Delete</button>
-          </td>
-        </tr>
+        {users.map((user) => (
+          <tr key={user.id}>
+            <td> {user.name}</td>
+            <td> {user.userName}</td>
+            <td>
+              <button className="button muted-button">Edit</button>
+              <button className="button muted-button">Delete</button>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
