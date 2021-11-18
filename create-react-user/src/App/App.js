@@ -5,11 +5,13 @@ import "./App.css";
 
 function App() {
   // Initial State
-  const usersData = [
-    { id: 1, name: "Nathalia", userName: "NatVanner_Rica_Mamacita" },
-    { id: 2, name: "Craig", userName: "siliconeidolon" },
-    { id: 3, name: "Ben", userName: "benisphere" },
-  ];
+  // const usersData = [
+  //   { id: 1, name: "Nathalia", userName: "NatVanner_Rica_Mamacita" },
+  //   { id: 2, name: "Craig", userName: "siliconeidolon" },
+  //   { id: 3, name: "Ben", userName: "benisphere" },
+  // ];
+
+  const usersData = [];
 
   // State
   const [users, setUsers] = useState(usersData);
