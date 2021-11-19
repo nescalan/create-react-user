@@ -1,7 +1,6 @@
 import React from "react";
 
 function UserTable({ users }) {
-  console.log("ESte es users.name" + users.name);
   return (
     <table>
       <thead>
