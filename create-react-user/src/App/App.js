@@ -1,17 +1,19 @@
 import React from "react";
 import { useState } from "react";
 import { UserTable } from "../UserTable/UserTable";
+import { v4 as uuidv4 } from "uuid";
+
 import "./App.css";
 
 function App() {
   // Initial State
-  // const usersData = [
-  //   { id: 1, name: "Nathalia", userName: "NatVanner_Rica_Mamacita" },
-  //   { id: 2, name: "Craig", userName: "siliconeidolon" },
-  //   { id: 3, name: "Ben", userName: "benisphere" },
-  // ];
+  const usersData = [
+    { id: uuidv4(), name: "Nathalia", userName: "NatVanner" },
+    { id: uuidv4(), name: "Craig", userName: "siliconeidolon" },
+    { id: uuidv4(), name: "Ben", userName: "benisphere" },
+  ];
 
-  const usersData = [];
+  // const usersData = [];
 
   // State
   const [users, setUsers] = useState(usersData);

@@ -26,6 +26,8 @@ function UserTable({ users }) {
         ) : (
           <tr className="alert alert-danger">
             <td>-- You must insert a Name --</td>
+            <td className="alert alert-danger"></td>
+            <td className="alert alert-danger"></td>
           </tr>
         )}
       </tbody>
