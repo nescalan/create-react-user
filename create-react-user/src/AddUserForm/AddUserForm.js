@@ -12,7 +12,7 @@ const AddUserForm = (props) => {
   // Handle OnSbmit()
   const onSubmit = (data, e) => {
     data.id = null;
-    console.log(data);
+    // console.log(data);
     props.addUser(data);
     e.target.reset();
   };

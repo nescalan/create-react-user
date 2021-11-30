@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+// Automated Users ID from a library UUID
 import { v4 as uuidv4 } from "uuid";
 
 // Styles
@@ -22,9 +23,14 @@ function App() {
   // Add New User
   const addUser = (user) => {
     user.id = uuidv4();
-    console.log(toString(user));
+    // console.log(toString(user));
     setUsers([...users, user]);
     console.log(user.userName);
+  };
+
+  // Delete Specific User Thru the ID
+  const deleteUser = (id) => {
+    setUsers(users.filter((user) => user.id !== id));
   };
 
   return (
@@ -37,7 +43,7 @@ function App() {
         </div>
         <div className="flex-large">
           <h2>View users</h2>
-          <UserTable users={users} />
+          <UserTable users={users} deleteUser={deleteUser} />
         </div>
       </div>
     </div>
