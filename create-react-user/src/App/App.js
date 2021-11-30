@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+
 // Automated Users ID from a library UUID
 import { v4 as uuidv4 } from "uuid";
 
@@ -9,6 +10,7 @@ import "./App.css";
 // Local Modules
 import { AddUserForm } from "../AddUserForm/AddUserForm";
 import { UserTable } from "../UserTable/UserTable";
+import { EditUserForm } from "../EditUserForm/EditUserForm";
 
 function App() {
   // Initial State
@@ -33,17 +35,44 @@ function App() {
     setUsers(users.filter((user) => user.id !== id));
   };
 
+  // Edit Specific User Thru The ID
+  const [editing, setEditing] = useState(false);
+
+  const [currentUser, setCurrentUser] = useState({
+    id: null,
+    name: "",
+    userName: "",
+  });
+
+  const editRow = (user) => {
+    setEditing(true);
+    setCurrentUser({
+      id: user.id,
+      name: user.id,
+      userName: user.userName,
+    });
+  };
+
   return (
     <div className="container">
       <h1>CRUD App with Hooks</h1>
       <div className="flex-row">
         <div className="flex-large">
-          <h2>Add user</h2>
-          <AddUserForm addUser={addUser} />
+          {editing ? (
+            <>
+              <h2>Edit user</h2>
+              <EditUserForm currentUser={currentUser} />
+            </>
+          ) : (
+            <>
+              <h2>Add user</h2>
+              <AddUserForm addUser={addUser} />
+            </>
+          )}
         </div>
         <div className="flex-large">
           <h2>View users</h2>
-          <UserTable users={users} deleteUser={deleteUser} />
+          <UserTable users={users} deleteUser={deleteUser} editRow={editRow} />
         </div>
       </div>
     </div>
