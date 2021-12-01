@@ -48,20 +48,27 @@ function App() {
     setEditing(true);
     setCurrentUser({
       id: user.id,
-      name: user.id,
+      name: user.name,
       userName: user.userName,
     });
   };
 
+  // Update User from EditUserForm.js
+  const updateUser = (id, updatedUser) => {
+    setEditing(false);
+
+    setUsers(users.map((user) => (user.id === id ? updatedUser : user)));
+  };
+
   return (
     <div className="container">
-      <h1>CRUD App with Hooks</h1>
+      <h1>Favorite Contact List</h1>
       <div className="flex-row">
         <div className="flex-large">
           {editing ? (
             <>
               <h2>Edit user</h2>
-              <EditUserForm currentUser={currentUser} />
+              <EditUserForm currentUser={currentUser} updateUser={updateUser} />
             </>
           ) : (
             <>

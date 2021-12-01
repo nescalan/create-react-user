@@ -1,6 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
+// Styles
+import "./AddUserForm.css";
+
 const AddUserForm = (props) => {
   // useForm
   const {
@@ -18,36 +21,38 @@ const AddUserForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label>Name</label>
-      <input
-        type="text"
-        name="name"
-        {...register("name", {
-          required: true,
-          maxLength: 30,
-          message: "Required",
-        })}
-      />
-      {errors.name && (
-        <span className="alert alert-danger"> This field is required</span>
-      )}
+    <>
+      <form className="form-control" onSubmit={handleSubmit(onSubmit)}>
+        <label className="bg-white">Name</label>
+        <input
+          type="text"
+          name="name"
+          {...register("name", {
+            required: true,
+            maxLength: 30,
+            message: "Required",
+          })}
+        />
+        {errors.name && (
+          <span className="alert alert-danger"> This field is required</span>
+        )}
 
-      <label>Username</label>
-      <input
-        type="text"
-        name="userName"
-        {...register("userName", {
-          required: true,
-          maxLength: 30,
-          message: "Required",
-        })}
-      />
-      {errors.userName && (
-        <span className="alert alert-danger"> This field is required</span>
-      )}
-      <button className="d-flex mt-5">Add new user</button>
-    </form>
+        <label className="bg-white">Username</label>
+        <input
+          type="text"
+          name="userName"
+          {...register("userName", {
+            required: true,
+            maxLength: 30,
+            message: "Required",
+          })}
+        />
+        {errors.userName && (
+          <span className="alert alert-danger"> This field is required</span>
+        )}
+        <button className="d-flex mt-5">Add new user</button>
+      </form>
+    </>
   );
 };
 

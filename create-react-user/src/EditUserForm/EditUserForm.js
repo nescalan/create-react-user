@@ -1,25 +1,34 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const EditUserForm = ({ currentUser }) => {
+const EditUserForm = (props) => {
+  console.log(props.currentUser);
+
   // useForm
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: props.currentUser,
+  });
+
+  // Save Edited Values
+  setValue("name", props.currentUser.name);
+  setValue("userName", props.currentUser.userName);
 
   // Handle OnSbmit()
   const onSubmit = (data, e) => {
-    data.id = null;
-    console.log(data);
-    props.addUser(data);
+    // data.id = null;
+    // props.addUser(data);
+    props.updateUser(props.currentUser.id, data);
     e.target.reset();
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label>Name</label>
+    <form className="form-control" onSubmit={handleSubmit(onSubmit)}>
+      <label className="bg-white">Name</label>
       <input
         type="text"
         name="name"
@@ -33,7 +42,7 @@ const EditUserForm = ({ currentUser }) => {
         <span className="alert alert-danger"> This field is required</span>
       )}
 
-      <label>Username</label>
+      <label className="bg-white">Username</label>
       <input
         type="text"
         name="userName"
