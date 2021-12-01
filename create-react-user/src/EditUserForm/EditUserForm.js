@@ -55,7 +55,7 @@ const EditUserForm = (props) => {
       {errors.userName && (
         <span className="alert alert-danger"> This field is required</span>
       )}
-      <button className="d-flex mt-5">Edit new user</button>
+      <button className="d-flex mt-5">Save Changes</button>
     </form>
   );
 };
